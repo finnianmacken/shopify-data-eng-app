@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 import styles from './ViewImage.module.css'
-const AWS = require('aws-sdk/global');
-AWS.config.update({ accessKeyId: 'AKIAZ4ZCMW6WEUTNSN5J',
-                    secretAccessKey: '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',
-                    region: 'us-east-1' });
+import AWS from 'aws-sdk';
+
+AWS.config.update({ accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+                    region: process.env.REACT_APP_AWS_REGION });
 
 const s3 = new AWS.S3();
 
@@ -13,11 +14,6 @@ const params = {
  Bucket: 'finn-image-storage',
  Delimiter: '',
 };
-
-//  s3.listObjectsV2(params, (err, data) => {
-//  if (err) throw err;
-//  console.log(data.Contents);
-// })
 
 function ViewImage(props){
   const [listFiles, setListFiles] = useState([]);

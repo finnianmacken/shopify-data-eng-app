@@ -6,17 +6,16 @@ import styles from './UploadImage.module.css'
 import AWS from 'aws-sdk'
 
 const S3_BUCKET ='finn-image-storage';
-const REGION ='us-east-1';
 
 
 AWS.config.update({
-    accessKeyId: "AKIAZ4ZCMW6WEUTNSN5J",
-    secretAccessKey: "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"
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
 })
 
 const myBucket = new AWS.S3({
     params: { Bucket: S3_BUCKET},
-    region: REGION,
+    region: process.env.REACT_APP_AWS_REGION,
 })
 
 const UploadImage = (props) => {
@@ -41,6 +40,9 @@ const UploadImage = (props) => {
             Key: file.name
         };
 
+        console.log("FILE:", file)
+        console.log("KEY:", file.name)
+
 
         myBucket.putObject(params)
             .on('httpUploadProgress', (evt) => {
@@ -54,7 +56,7 @@ const UploadImage = (props) => {
                 }
             })
             .send((err) => {
-                if (err) console.log(err)
+                console.log("ERR", err)
             })
     }
 
