@@ -5,11 +5,7 @@ I had almost no time for this data engineering challenge, because the early invi
 
 I implemented these requirements with a React frontend and an AWS backend, using an S3 bucket as a data repository. This has several advantages, but most significantly it results in high availability and concurrency, and is well-suited for hosting large media files like images.
 
-All environment variables are as follows:
-
-REACT_APP_AWS_ACCESS_KEY_ID=AKIAZ4ZCMW6WEUTNSN5J
-REACT_APP_AWS_SECRET_ACCESS_KEY=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
-REACT_APP_AWS_REGION=us-east-1
+All environment variables are as follows (only available on Notion version of README).
 
 The `.env` file has to be in the project’s root directory, and it must have the exact prefixes shown above to work (`create-react-app` limits the syntax of environment variables to avoid exposure).
 
