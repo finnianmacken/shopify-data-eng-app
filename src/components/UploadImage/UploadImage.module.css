@@ -1,0 +1,13 @@
+.positionWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadWrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 300px;
+  height: 300px;
+}
